@@ -67,7 +67,7 @@
 ```
   // TODO 未处理IE6-8的兼容性
   function setOpacity(node, val) {
-      node.style.opacity = val;
+    node.style.opacity = val;
   }
 ```
 
@@ -78,7 +78,7 @@
 ```
   /**
    * comment
-   *
+   */
 ```
 
 文档注释必须包含一个或多个注释标签。
@@ -162,6 +162,7 @@
    * @property {属性类型} 属性名
    */
 ```
+
 #### 参考
 
 [js/javascript代码注释规范与示例](http://www.lifefrom.com/qianduan/336.html)
