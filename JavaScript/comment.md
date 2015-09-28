@@ -181,7 +181,7 @@
 
 #### 参考
 
-[js/javascript代码注释规范与示例](http://www.lifefrom.com/qianduan/336.html)
-[jsdoc-toolkit](https://code.google.com/p/jsdoc-toolkit/w/list)
-[@use JSDoc](http://usejsdoc.org/)
-[JSDoc+规范](http://ask.dcloud.net.cn/article/129)
+[js/javascript代码注释规范与示例](http://www.lifefrom.com/qianduan/336.html) 
+[jsdoc-toolkit](https://code.google.com/p/jsdoc-toolkit/w/list) 
+[@use JSDoc](http://usejsdoc.org/) 
+[JSDoc+规范](http://ask.dcloud.net.cn/article/129) 
