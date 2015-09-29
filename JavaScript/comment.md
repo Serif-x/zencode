@@ -176,7 +176,7 @@
   @example 提示代码示例
   @extends {type} 标识继承于某个类型
   @type {Type[,Type,...]} 定义某个变量的类型
-  @ignore JSDoc忽略有这个标记的函数
+  @ignore JsDoc忽略有这个标记的函数
 ```
 
 #### 参考
