@@ -404,3 +404,7 @@ if (browserName == "Netscape") {
 
 ```
 
+## [参考]
+
+[45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)  
+
