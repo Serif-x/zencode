@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computing Vocabularies</title>
+  <style>
+    body {
+      font-size: 14px;
+    }
+    p {
+      margin: .5em 0;
+    }
+  </style>
+</head>
+<body>
+
+<figure id="content">
+
+</figure>
+
+<script>
+  function $(selector){
+    return document.querySelectorAll(selector);
+  }
+  function XHR(){
+    try {
+      return new XMLHttpRequest();
+    } catch (err) { }
+  }
+
+  function ajaxLoad(options){
+    var opts = {
+      method: 'get',
+      url: null,
+      async: true,
+      type: 'text',
+      success: function(){ },
+      error: function(){ }
+    };
+    for (var p in options) {
+      if (options.hasOwnProperty(p)) {
+        opts[p] = options[p];
+      }
+    }
+
+    var xhr = XHR();
+    xhr.responseType = opts.type;
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState === 4) {
+        xhr.status === 200 ? opts.success(xhr.response) : opts.error();
+      }
+    };
+    xhr.open(opts.method, opts.url, opts.async);
+    xhr.send();
+  }
+
+  ajaxLoad({
+    method: 'get',
+    url: '计算机常用专业词汇.json',
+    type: 'json',
+    success: function(data){
+      var frag = document.createDocumentFragment();
+      for (var k in data) {
+        if (data.hasOwnProperty(k)) {
+          var p = document.createElement('p');
+          p.innerHTML = '<i>' + k + '</i> : ' + data[k];
+          frag.appendChild(p);
+        }
+      }
+      $('#content')[0].appendChild(frag);
+    },
+    error: function(){
+      alert('读取异常： 请检查或在服务器环境中浏览！');
+    }
+  });
+</script>
+</body>
+</html>
