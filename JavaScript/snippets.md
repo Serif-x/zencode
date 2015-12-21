@@ -236,7 +236,7 @@ if (b) // this condition evaluates to true
 // NOTE: 
 ```
 
-## [闭包]利用闭包模拟私有方法
+## \[闭包\]利用闭包模拟私有方法
 
 ```
 var makeCounter = function() {
@@ -404,7 +404,6 @@ if (browserName == "Netscape") {
 
 ```
 
-## [参考]
+## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)  
-

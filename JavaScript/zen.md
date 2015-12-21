@@ -155,6 +155,6 @@ console.log(cats); // [undefined, undefined, undefined]
 
 ```
 
-## [参考]  
+## \[参考\]  
 
 [MDN](//developer.mozilla.org/zh-CN/docs/Web/JavaScript)  
