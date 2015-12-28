@@ -1,4 +1,4 @@
-# JavaScript编码习惯
+# JavaScript编码习惯和技巧
 
 ## 运用||和&&运算符
 
@@ -6,7 +6,6 @@
 var foo = 10;    
 foo == 10 && doSomething(); // is the same thing as if (foo == 10) doSomething();   
 foo == 5 || doSomething(); // is the same thing as if (foo != 5) doSomething(); 
-
 ```
 
 ## 用map遍历处理数组
@@ -16,7 +15,6 @@ var squares = [1,2,3,4].map(function (val) {
   return val * val;    
 });   
 // squares will be equal to [1, 4, 9, 16]
-
 ```
 
 ## 浮点数处理
@@ -24,7 +22,6 @@ var squares = [1,2,3,4].map(function (val) {
 ```
 var num = 2.443242342;  
 num = num.toFixed(4);  // num will be equal to 2.4432
-
 ```
 
 ```
@@ -34,7 +31,6 @@ num = num.toFixed(4);  // num will be equal to 2.4432
 
 //use toFixed() or toPrecision() to solve this problem
 //NOTE : the toFixed() and toPrecision() function returns a string, not a number.
-
 ```
 
 ## 用'==='而不是'=='
@@ -48,7 +44,6 @@ num = num.toFixed(4);  // num will be equal to 2.4432
  []  === 0     // is false
  ''  ==  false // is true but true == "a" is false
  ''  === false // is false 
-
 ```
 
 ## 用switch处理判断(true/false)
@@ -73,7 +68,6 @@ function getCategory(age) {
   return category;    
 }    
 getCategory(5);  // will return "Baby" 
-
 ```
 
 ## 尽量用原生表达式而不是函数调用
@@ -86,7 +80,6 @@ A.push(v);
 
 var min = a < b ? a : b;   
 A[A.length] = v;
-
 ```
 
 ## 数组连接
@@ -100,14 +93,12 @@ var moreVegs = ['celery', 'beetroot'];
 Array.prototype.push.apply(vegetables, moreVegs);
 
 console.log(vegetables); // ['parsnip', 'potato', 'celery', 'beetroot']
-
 ```
 
 ## 将arguments转换为数组
 
 ```
 var argArray = Array.prototype.slice.call(arguments);
-
 ```
 
 ## 判断是否为数组
@@ -120,7 +111,6 @@ function isArray(obj){
 // or use...
 
 Array.isArray(obj); // its a new Array method
-
 ```
 
 ## 判断是否为数字
@@ -129,14 +119,12 @@ Array.isArray(obj); // its a new Array method
 function isNumber(n){
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
-
 ```
 
 ## 打散字符串为单个字符（数组）
 
 ```
 str.split('');
-
 ```
 
 ## 创建自调用函数
@@ -149,7 +137,6 @@ str.split('');
 	var result = a + b;
 	return result;
 })(10, 20)
-
 ```
 
 ## 随机获取数组中元素
@@ -157,7 +144,6 @@ str.split('');
 ```
 var items = [12, 548 , 'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' , 2145 , 119];
 var randomItem = items[Math.floor(Math.random() * items.length)];
-
 ```
 
 ## 生成固定范围内的数组
@@ -166,7 +152,6 @@ var randomItem = items[Math.floor(Math.random() * items.length)];
 var numbersArray = [], max = 100;
 
 for( var i=1; numbersArray.push(i++) < max;);  // numbersArray = [1,2,3 ... 100]
-
 ```
 
 ## 打乱数组顺序
@@ -175,7 +160,6 @@ for( var i=1; numbersArray.push(i++) < max;);  // numbersArray = [1,2,3 ... 100]
 var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411];
 numbers = numbers.sort(function(){ return Math.random() - 0.5});
 /* the array numbers will be equal for example to [120, 5, 228, -215, 400, 458, -85411, 122205]  */
-
 ```
 
 ## 取得数组中最大或最小值
@@ -184,7 +168,6 @@ numbers = numbers.sort(function(){ return Math.random() - 0.5});
 var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411]; 
 var maxInNumbers = Math.max.apply(null, numbers); 
 var minInNumbers = Math.min.apply(null, numbers);
-
 ```
 
 ## 不要用delete删除数组中的元素
@@ -195,7 +178,6 @@ items.length; // return 11
 delete items[3]; // return true 
 items.length; // return 11 
 /* items will be equal to [12, 548, "a", undefined × 1, 5478, "foo", 8852, undefined × 1, "Doe", 2154, 119]   */
-
 // below is better
 
 var items = [12, 548 ,'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' ,2154 , 119 ]; 
@@ -203,7 +185,6 @@ items.length; // return 11
 items.splice(3,1) ; 
 items.length; // return 10 
 /* items will be equal to [12, 548, "a", 5478, "foo", 8852, undefined × 1, "Doe", 2154, 119]   */
-
 ```
 
 ## 缩减数组
@@ -212,7 +193,6 @@ items.length; // return 10
 var myArray = [12 , 222 , 1000 , 124 , 98 , 10 ];  
 myArray.length = 4; // myArray will be equal to [12 , 222 , 1000 , 124].
 //The array length is not a read only property.
-
 ```
 
 ## 去除字符串前后空白
@@ -225,7 +205,6 @@ if(!String.prototype.trim) {
     return this.replace(/^\s+|\s+$/g,'');
   };
 }
-
 ```
 
 ## 注意区分布尔值true/false 与 布尔对象的值true/false
@@ -266,7 +245,6 @@ alert(Counter1.value()); /* 提示 2 */
 Counter1.decrement();
 alert(Counter1.value()); /* 提示 1 */
 alert(Counter2.value()); /* 提示 0 */
-
 ```
 
 ## 数组排序函数
@@ -275,7 +253,6 @@ alert(Counter2.value()); /* 提示 0 */
 list.sort(function(a, b) {
   return +(a.value > b.value) || +(a.value === b.value) - 1;
 });
-
 ```
 
 ## 将数组所有项累加
@@ -285,7 +262,6 @@ var total = [0, 1, 2, 3].reduce(function(a, b) {
     return a + b;
 });
 // total == 6
-
 ```
 
 ## 数组扁平化
@@ -295,7 +271,6 @@ var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
     return a.concat(b);
 });
 // flattened is [0, 1, 2, 3, 4, 5]
-
 ```
 
 ## 点击其他（空白）地方执行操作，如关闭等
@@ -342,7 +317,6 @@ function OnBlankTap(targetsExcluded, callback){
     if (callback && 'function' === typeof callback) callback();
   });
 }
-
 ```
 
 ## 复制对象
@@ -358,7 +332,6 @@ Object.prototype.clone = function(){
   }
   return copy;
 }
-
 ```
 
 ## Firefox下设置或获取scrollTop需特定写法
@@ -378,7 +351,6 @@ function getScrollXY(){
 
 //jQuery写法
 $("html, body").scrollTop()
-
 ```
 
 ## 时间
@@ -386,7 +358,6 @@ $("html, body").scrollTop()
 ```
 //获取时间数值
 +new Date()
-
 ```
 
 ## 关闭打开窗口
@@ -401,9 +372,55 @@ if (browserName == "Netscape") {
   window.open('', '_top');
   window.top.close();
 }
+```
 
+## Sibling elements
+
+```
+// jQuery
+$el.siblings();
+
+// Native
+[].filter.call(el.parentNode.children, function(child) {
+  return child !== el;
+});
+```
+
+##  Iframe Contents
+
+```
+// jQuery
+$iframe.contents();
+
+// Native
+iframe.contentDocument;
+```
+
+## Get style
+
+```
+// jQuery
+$el.css("color");
+
+// Native
+// NOTE: Known bug, will return 'auto' if style value is 'auto'
+const win = el.ownerDocument.defaultView;
+// null means not return pseudo styles
+win.getComputedStyle(el, null).color;
+```
+
+## DOM - remove
+
+```
+// jQuery
+$el.remove();
+
+// Native
+el.parentNode.removeChild(el);
 ```
 
 ## \[参考\]
 
+
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)  
+[You Don't Need jQuery](//github.com/oneuijs/You-Dont-Need-jQuery)  
