@@ -44,6 +44,32 @@ num = num.toFixed(4);  // num will be equal to 2.4432
  []  === 0     // is false
  ''  ==  false // is true but true == "a" is false
  ''  === false // is false 
+  
+ ""        == "0"       // false
+ 0         == ""        // true
+ 0         == "0"       // true
+ false     == "false"   // false
+ false     == "0"       // true
+ false     == undefined // false
+ false     == null      // false
+ null      == undefined // true
+ " \t\r\n" == 0         // true
+```
+
+有趣的现象： "" == "0" 且 0 == "0"，但是 "" == 0 为false，当然这是js隐式转换的问题
+
+## 布尔型转换
+
+> 通过使用 否 操作符两次，可以把一个值转换为布尔型。
+
+```
+!!'foo';   // true
+!!'';      // false
+!!'0';     // true
+!!'1';     // true
+!!'-1'     // true
+!!{};      // true
+!!true;    // true
 ```
 
 ## 用switch处理判断(true/false)
@@ -419,8 +445,17 @@ $el.remove();
 el.parentNode.removeChild(el);
 ```
 
+## 创建重复字符串
+
+```
+var count = 3;
+var stringToRepeat = 'a';
+var repeatStr = new Array(count + 1).join(stringToRepeat); // aaa
+```
+
 ## \[参考\]
 
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)  
 [You Don't Need jQuery](//github.com/oneuijs/You-Dont-Need-jQuery)  
+[JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)  
