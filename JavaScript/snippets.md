@@ -453,9 +453,59 @@ var stringToRepeat = 'a';
 var repeatStr = new Array(count + 1).join(stringToRepeat); // aaa
 ```
 
-## \[参考\]
+## & (按位与)
 
+```
+// 判断一个数是否为2的n次幂，可以将其与自身减一相与
+
+var number = 4
+(number & number -1) === 0 // true
+```
+
+## ^ (按位异或)
+
+```
+// 不用第三个变量，就可以交换两个变量的值
+var a = 4,
+    b = 3;
+    
+a = a ^ b; // 7
+b = a ^ b; // 4
+a = a ^ b; // 3
+```
+
+## Object.prototype.toString()
+
+在toString()方法被调用时,会执行下面的操作步骤:
+
+> 如果this的值为undefined,则返回"[object Undefined]".
+  如果this的值为null,则返回"[object Null]".
+  让O成为调用ToObject(this)的结果.
+  让class成为O的内部属性\[[Class]]的值.
+  返回三个字符串"[object ", class, 以及 "]"连接后的新字符串.
+
+由于 JavaScript 中一切都是对象，任何都不例外，对所有值类型应用Object.prototype.toString.call()
+
+方法结果如下：
+
+```
+console.log(Object.prototype.toString.call(123));          //[object Number]  
+console.log(Object.prototype.toString.call('123'));        //[object String]  
+console.log(Object.prototype.toString.call(undefined));    //[object Undefined]  
+console.log(Object.prototype.toString.call(true));         //[object Boolean]  
+console.log(Object.prototype.toString.call({}));           //[object Object]  
+console.log(Object.prototype.toString.call([]));           //[object Array]  
+console.log(Object.prototype.toString.call(function(){})); //[object Function]  
+```
+
+所有类型都会得到不同的字符串，几乎完美。
+在JavaScript中,想要判断某个对象值属于哪种内置类型,最靠谱的做法就是通过 **Object.prototype.toString()** 方法.
+
+
+## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)  
 [You Don't Need jQuery](//github.com/oneuijs/You-Dont-Need-jQuery)  
 [JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)  
+[盘点JavaScript里好用的原生API ꒰･◡･๑꒱](//segmentfault.com/a/1190000002753931)  
+[关于原生js的一些研究](//segmentfault.com/a/1190000002911253)  
