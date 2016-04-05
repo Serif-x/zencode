@@ -13,11 +13,13 @@
 ```
 .slider ul {
   max-height: 0;
+  min-height: $VALUE$
   overflow: hidden;
 }
 
 .slider:hover ul {
   max-height: 1000px; /* has limits */
+  height: auto;
   transition: .3s ease; /* animate to max-height */
 }
 ```

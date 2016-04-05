@@ -3,30 +3,30 @@
 ## 运用||和&&运算符
 
 ```
-var foo = 10;    
-foo == 10 && doSomething(); // is the same thing as if (foo == 10) doSomething();   
-foo == 5 || doSomething(); // is the same thing as if (foo != 5) doSomething(); 
+var foo = 10;
+foo == 10 && doSomething(); // is the same thing as if (foo == 10) doSomething();
+foo == 5 || doSomething(); // is the same thing as if (foo != 5) doSomething();
 ```
 
 ## 用map遍历处理数组
 
 ```
-var squares = [1,2,3,4].map(function (val) {    
-  return val * val;    
-});   
+var squares = [1,2,3,4].map(function (val) {
+  return val * val;
+});
 // squares will be equal to [1, 4, 9, 16]
 ```
 
 ## 浮点数处理
 
 ```
-var num = 2.443242342;  
+var num = 2.443242342;
 num = num.toFixed(4);  // num will be equal to 2.4432
 ```
 
 ```
 0.1 + 0.2 === 0.3 // is false, 0.30000000000000004 instead.
-9007199254740992 + 1 // is equal to 9007199254740992    
+9007199254740992 + 1 // is equal to 9007199254740992
 9007199254740992 + 2 // is equal to 9007199254740994
 
 //use toFixed() or toPrecision() to solve this problem
@@ -43,8 +43,8 @@ num = num.toFixed(4);  // num will be equal to 2.4432
  []  ==  0     // is true
  []  === 0     // is false
  ''  ==  false // is true but true == "a" is false
- ''  === false // is false 
-  
+ ''  === false // is false
+
  ""        == "0"       // false
  0         == ""        // true
  0         == "0"       // true
@@ -75,36 +75,36 @@ num = num.toFixed(4);  // num will be equal to 2.4432
 ## 用switch处理判断(true/false)
 
 ```
-function getCategory(age) {    
-  var category = "";    
-  switch (true) {    
-    case isNaN(age):    
-			category = "not an age";    
-			break;    
-    case (age >= 50):    
-			category = "Old";    
-			break;    
-    case (age <= 20):    
-			category = "Baby";    
-			break;    
-    default:    
-			category = "Young";    
-			break;    
-  };    
-  return category;    
-}    
-getCategory(5);  // will return "Baby" 
+function getCategory(age) {
+  var category = "";
+  switch (true) {
+    case isNaN(age):
+			category = "not an age";
+			break;
+    case (age >= 50):
+			category = "Old";
+			break;
+    case (age <= 20):
+			category = "Baby";
+			break;
+    default:
+			category = "Young";
+			break;
+  };
+  return category;
+}
+getCategory(5);  // will return "Baby"
 ```
 
 ## 尽量用原生表达式而不是函数调用
 
 ```
-var min = Math.min(a,b);   
-A.push(v); 
+var min = Math.min(a,b);
+A.push(v);
 
 //below is better
 
-var min = a < b ? a : b;   
+var min = a < b ? a : b;
 A[A.length] = v;
 ```
 
@@ -158,7 +158,7 @@ str.split('');
 ```
 (function(){
 	// some private code that will be executed automatically
-})();  
+})();
 (function(a,b){
 	var result = a + b;
 	return result;
@@ -191,32 +191,32 @@ numbers = numbers.sort(function(){ return Math.random() - 0.5});
 ## 取得数组中最大或最小值
 
 ```
-var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411]; 
-var maxInNumbers = Math.max.apply(null, numbers); 
+var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411];
+var maxInNumbers = Math.max.apply(null, numbers);
 var minInNumbers = Math.min.apply(null, numbers);
 ```
 
 ## 不要用delete删除数组中的元素
 
 ```
-var items = [12, 548 ,'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' ,2154 , 119 ]; 
-items.length; // return 11 
-delete items[3]; // return true 
-items.length; // return 11 
+var items = [12, 548 ,'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' ,2154 , 119 ];
+items.length; // return 11
+delete items[3]; // return true
+items.length; // return 11
 /* items will be equal to [12, 548, "a", undefined × 1, 5478, "foo", 8852, undefined × 1, "Doe", 2154, 119]   */
 // below is better
 
-var items = [12, 548 ,'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' ,2154 , 119 ]; 
-items.length; // return 11 
-items.splice(3,1) ; 
-items.length; // return 10 
+var items = [12, 548 ,'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' ,2154 , 119 ];
+items.length; // return 11
+items.splice(3,1) ;
+items.length; // return 10
 /* items will be equal to [12, 548, "a", 5478, "foo", 8852, undefined × 1, "Doe", 2154, 119]   */
 ```
 
 ## 缩减数组
 
 ```
-var myArray = [12 , 222 , 1000 , 124 , 98 , 10 ];  
+var myArray = [12 , 222 , 1000 , 124 , 98 , 10 ];
 myArray.length = 4; // myArray will be equal to [12 , 222 , 1000 , 124].
 //The array length is not a read only property.
 ```
@@ -238,7 +238,7 @@ if(!String.prototype.trim) {
 ```
 var b = new Boolean(false);
 if (b) // this condition evaluates to true
-// NOTE: 
+// NOTE:
 ```
 
 ## \[闭包\]利用闭包模拟私有方法
@@ -259,7 +259,7 @@ var makeCounter = function() {
     value: function() {
       return privateCounter;
     }
-  }  
+  }
 };
 
 var Counter1 = makeCounter();
@@ -313,13 +313,13 @@ $(document).on('click', function(e){
       return;
     }
   }
-  
+
   //do something when click on others
 });
 
 //封装后
 
-function OnBlankTap(targetsExcluded, callback){
+function attachBlankTap(targetsExcluded, callback){
   var tarExts = targetsExcluded;
   // convert to jQuery object
   if ($.isArray(tarExts)) {
@@ -468,7 +468,7 @@ var number = 4
 // 不用第三个变量，就可以交换两个变量的值
 var a = 4,
     b = 3;
-    
+
 a = a ^ b; // 7
 b = a ^ b; // 4
 a = a ^ b; // 3
@@ -489,23 +489,45 @@ a = a ^ b; // 3
 方法结果如下：
 
 ```
-console.log(Object.prototype.toString.call(123));          //[object Number]  
-console.log(Object.prototype.toString.call('123'));        //[object String]  
-console.log(Object.prototype.toString.call(undefined));    //[object Undefined]  
-console.log(Object.prototype.toString.call(true));         //[object Boolean]  
-console.log(Object.prototype.toString.call({}));           //[object Object]  
-console.log(Object.prototype.toString.call([]));           //[object Array]  
-console.log(Object.prototype.toString.call(function(){})); //[object Function]  
+console.log(Object.prototype.toString.call(123));          //[object Number]
+console.log(Object.prototype.toString.call('123'));        //[object String]
+console.log(Object.prototype.toString.call(undefined));    //[object Undefined]
+console.log(Object.prototype.toString.call(true));         //[object Boolean]
+console.log(Object.prototype.toString.call({}));           //[object Object]
+console.log(Object.prototype.toString.call([]));           //[object Array]
+console.log(Object.prototype.toString.call(function(){})); //[object Function]
 ```
 
 所有类型都会得到不同的字符串，几乎完美。
 在JavaScript中,想要判断某个对象值属于哪种内置类型,最靠谱的做法就是通过 **Object.prototype.toString()** 方法.
 
+## 判断对象是否为空对象，即不包含任何原始属性
+
+```
+function isEmpty(obj){
+    for (var p in obj) {
+      return false;
+    }
+    return true;
+  }
+```
+
+##
+
+```
+
+```
+
+##
+
+```
+
+```
 
 ## \[参考\]
 
-[45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)  
-[You Don't Need jQuery](//github.com/oneuijs/You-Dont-Need-jQuery)  
-[JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)  
-[盘点JavaScript里好用的原生API ꒰･◡･๑꒱](//segmentfault.com/a/1190000002753931)  
-[关于原生js的一些研究](//segmentfault.com/a/1190000002911253)  
+[45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)
+[You Don't Need jQuery](//github.com/oneuijs/You-Dont-Need-jQuery)
+[JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)
+[盘点JavaScript里好用的原生API ꒰･◡･๑꒱](//segmentfault.com/a/1190000002753931)
+[关于原生js的一些研究](//segmentfault.com/a/1190000002911253)
