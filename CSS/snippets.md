@@ -67,6 +67,14 @@ CSS 选择器匹配规则是从右往左，例如：
 }
 ```
 
+## 块级元素右对齐
+```
+.block-right {
+	margin-left: auto;
+	margin-right: 0;
+}
+```
+
 ## \[参考\]
 
 [CSS Protips](//github.com/AllThingsSmitty/css-protips)  
