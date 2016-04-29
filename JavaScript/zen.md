@@ -1,4 +1,5 @@
-# JavaScript知识点
+JavaScript知识点
+===
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 

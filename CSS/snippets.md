@@ -1,4 +1,6 @@
-# CSS编码习惯和技巧
+CSS编码习惯和技巧
+===
+
 
 ## "Lobotomized Owl" 选择器
 
@@ -55,6 +57,7 @@ a[href]:not([class]) {
             box-sizing: border-box;
 }
 ```
+
 [关于css通配符性能问题不完全测试](//i.wanz.im/2012/01/03/performance_testing_about_css_universal_selector/)
 
 ## 不要在选择器末尾使用 * 通用选择器。
@@ -68,12 +71,25 @@ CSS 选择器匹配规则是从右往左，例如：
 ```
 
 ## 块级元素右对齐
+
 ```
 .block-right {
-	margin-left: auto;
-	margin-right: 0;
+  margin-left: auto;
+  margin-right: 0;
 }
 ```
+
+## 让overflow:auto页面滚动条出现时不跳动
+
+```
+@media screen and (min-width: 1150px) { /*for小屏幕*/   
+.wrap-outer {
+    margin-left: calc(100vw - 100%);
+  }
+}
+```
+
+[让overflow:auto页面滚动条出现时不跳动](//www.zhangxinxu.com/wordpress/2015/01/css-page-scrollbar-toggle-center-no-jumping/)
 
 ## \[参考\]
 

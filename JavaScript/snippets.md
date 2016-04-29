@@ -1,11 +1,36 @@
-# JavaScript编码习惯和技巧
+JavaScript编码习惯和技巧
+===
 
-## 运用||和&&运算符
+## 运用 || 和&&运算符
 
 ```
 var foo = 10;
 foo == 10 && doSomething(); // is the same thing as if (foo == 10) doSomething();
 foo == 5 || doSomething(); // is the same thing as if (foo != 5) doSomething();
+```
+
+## 运用 | 运算符
+
+在js整数操作的时候，相当于去除小数点（取整），parseInt。在正数的时候相当于Math.floor()，负数的时候相当于Math.ceil()  
+*[[REF](//www.haorooms.com/post/js_dsg_ysf)]*  
+
+```
+Math.ceil()  用作向上取整。
+Math.floor() 用作向下取整。
+Math.round() 我们数学中常用到的四舍五入取整。
+
+console.log(0.6|0)//0
+console.log(1.1|0)//1
+console.log(3.65555|0)//3
+console.log(5.99999|0)//5
+console.log(-7.777|0)//-7
+```
+
+同理有：
+```
+n<<0
+n>>0
+~~n
 ```
 
 ## 用map遍历处理数组
@@ -512,10 +537,11 @@ function isEmpty(obj){
   }
 ```
 
-##
+## 显示网页所有元素轮廓
 
+控制台中输入：
 ```
-
+[].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16) })
 ```
 
 ##
