@@ -544,10 +544,54 @@ function isEmpty(obj){
 [].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16) })
 ```
 
-##
+## 利用a标签自动解析URL
 
 ```
+function parseURL(url) {
+  var a = document.createElement('a');
+  a.href = url;
+  return {
+    source: url,
+    protocol: a.protocol.replace(':', ''),
+    host: a.hostname,
+    port: a.port,
+    query: a.search,
+    params: (function () {
+      var ret                 = {},
+          seg                 = a.search.replace(/^\?/, '').split('&'),
+          len = seg.length, i = 0, s;
+      for (; i < len; i++) {
+        if (!seg[i]) {
+          continue;
+        }
+        s = seg[i].split('=');
+        ret[s[0]] = s[1];
+      }
+      return ret;
+    })(),
+    file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+    hash: a.hash.replace('#', ''),
+    path: a.pathname.replace(/^([^\/])/, '/$1'),
+    relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+    segments: a.pathname.replace(/^\//, '').split('/')
+  };
+}
+```
+参考： [Parsing URLs with the DOM!](//james.padolsey.com/javascript/parsing-urls-with-the-dom/)  
 
+## 利用toString()方法生成随机字符串
+```
+function generateRandomAlphaNum(len) {
+  var rdmString = "";
+  for (; rdmString.length < len; rdmString += Math.random().toString(36).substr(2));
+  return rdmString.substr(0, len);
+}
+```
+
+## 禁止别人以iframe加载你的页面
+
+```
+if (window.location != window.parent.location) window.parent.location = window.location;
 ```
 
 ## \[参考\]
