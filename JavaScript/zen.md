@@ -1,29 +1,6 @@
 JavaScript知识点
 ===
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [JavaScript知识点](#javascript知识点)
-	- [命名空间](#命名空间)
-	- [变量](#变量)
-	- [对象](#对象)
-	- [原型链继承](#原型链继承)
-	- [不要使用Eval](#不要使用eval)
-	- [数据类型](#数据类型)
-		- [字符串](#字符串)
-	- [数字和日期](#数字和日期)
-		- [十进制数字](#十进制数字)
-		- [二进制数字](#二进制数字)
-		- [八进制数字](#八进制数字)
-		- [十六进制数字](#十六进制数字)
-	- [数组](#数组)
-		- [理解数组的length](#理解数组的length)
-	- [遍历](#遍历)
-	- [setTimeout 和 setInterval](#settimeout-和-setinterval)
-	- [\[参考\]](#参考)
-
-<!-- /TOC -->
-
 ## 命名空间
 
 > 在JavaScript中，命名空间只是另一个包含方法、属性和对象的对象。
@@ -92,6 +69,28 @@ var s2 = new String("2 + 2"); // Creates a String object
 eval(s1); // Returns the number 4
 eval(s2); // Returns the string "2 + 2"
 
+```
+
+> 大多数JavaScript引擎使用UTF-16编码字符。它会影响JavaScript处理Unicode的方式。
+  
+  UTF-16（全称：16位统一码转换格式）是一种变长编码:
+    + BMP中的代码点编码为单个16位的码元
+    + 星光平面的代码点编码为两个16位的码元
+
+> 通过索引访问字符实际上是访问码元
+> 始终将JavaScript中的字符串视为一串码元序列。字符串渲染的结果并不能清晰地表明它包含了怎样的码元。
+> 大多数JavaScript字符串方法都不能识别Unicode。如果字符串含有混合的Unicode字符，在调用myString.slice()、myString.substring()等方法时就要小心了。
+> 字符串迭代器能够识别Unicode
+> 准化并不能解决所有问题。那些比较长的组合字符序列并不都有对应的单个字符标准形式。
+
+```
+let smile = '\uD83D\uDE00';  
+console.log(smile);        // => '😀'  
+console.log(smile.length); // => 2
+
+let letter = 'e\u0301';  
+console.log(letter);        // => 'é'  
+console.log(letter.length); // => 2
 ```
 
 ## 数字和日期
@@ -203,6 +202,9 @@ console.log(cats); // [undefined, undefined, undefined]
 
 ```
 
+> 可以使用 delete 运算符来删除数组元素，效果和对数组元素赋值 undefined 类似，使用 delete 删除数组后数组的长度是不变的
+
+
 ## 遍历
 
 > for in 循环不会遍历那些 enumerable 设置为 false 的属性；比如数组的 length 属性。
@@ -221,7 +223,41 @@ console.log(cats); // [undefined, undefined, undefined]
 > setTimeout 和 setInterval 也接受第一个参数为字符串的情况。
   这个特性绝对不要使用，因为它在内部使用了 eval。
 
+## 回调大坑
+
+> 如果使用回调，通常最好使用Node.js风格，即第一个回调参数为error，它将始终被调用，用来提醒错误处理
+
+```
+var fs = require('fs')
+
+fs.readFile('/Does/not/exist', handleFile)
+
+function handleFile (error, file) {
+ if (error) return console.error('Uhoh, there was an error', error)
+ // otherwise, continue on and use `file` in your code
+}
+```
+
+## const 很有用，却不会使数据不可变。它只能防止变量被重新赋值。这不能混为一谈
+
+```
+const x = 1;
+x = 2; // 不允许
+
+const myArray = [1, 2, 3];
+myArray = [0, 2, 3]; // 不允许
+
+myArray[0] = 0; // 允许了!
+```
+
+## DOM属性
+
+> 如果属性是 JavaScript 中的保留字，一般用 html 前缀，比如 for 属性，使用 htmlFor 来访问。class 则不同，使用 className 来访问
+
 ## \[参考\]
 
-[MDN](//developer.mozilla.org/zh-CN/docs/Web/JavaScript)
-[JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)
+- [MDN](//developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+- [JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)
+- [Callback Hell](//callbackhell.com/)  
+- [JavaScript 与函数式编程](//www.zcfy.cc/article/javascript-and-functional-programming-1013.html)  
+- [每个JavaScript开发者都该懂的Unicode](//www.zcfy.cc/article/1303)
