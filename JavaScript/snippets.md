@@ -11,8 +11,8 @@ foo == 5 || doSomething(); // is the same thing as if (foo != 5) doSomething();
 
 ## 运用 | 运算符
 
-在js整数操作的时候，相当于去除小数点（取整），parseInt。在正数的时候相当于Math.floor()，负数的时候相当于Math.ceil()  
-*[[REF](//www.haorooms.com/post/js_dsg_ysf)]*  
+在js整数操作的时候，相当于去除小数点（取整），parseInt。在正数的时候相当于Math.floor()，负数的时候相当于Math.ceil()
+*[[REF](//www.haorooms.com/post/js_dsg_ysf)]*
 
 ```
 Math.ceil()  用作向上取整。
@@ -577,7 +577,7 @@ function parseURL(url) {
   };
 }
 ```
-参考： [Parsing URLs with the DOM!](//james.padolsey.com/javascript/parsing-urls-with-the-dom/)  
+参考： [Parsing URLs with the DOM!](//james.padolsey.com/javascript/parsing-urls-with-the-dom/)
 
 ## 利用toString()方法生成随机字符串
 ```
@@ -594,6 +594,59 @@ function generateRandomAlphaNum(len) {
 if (window.location != window.parent.location) window.parent.location = window.location;
 ```
 
+---
+> 更新： 2017/2/4
+
+## 用数组批量赋值
+
+```
+var [a, b, c] = 'hello world !'.split(' ');
+[a, b, c] = ['newhello', 'newworld', '?'];
+console.log(a);
+```
+
+---
+> 更新： 2017/2/15
+
+## 如果代码经常调用字面量值的方法，应该考虑把它们转换为对象
+
+> 字符串对象的所有属性和方法都是在字符串对象而不是值上定义的。如果你对字符串值调用属性和方法，ECMAScript 引擎必须用相同的字符串值隐式地创建一个新的字符串对象，然后才能调用方法。这个对象仅用于这一个需求，如果下次再对字符串值调用某个方法，会再次类似地创建字符串对象。
+
+下面的示例的让脚本引擎创建 21 个新的字符串对象。每次访问 length 属性和每次调用 charAt 方法的时候都会创建对象：
+
+```
+var s = '0123456789';
+for (var i = 0; i < s.length; i++) {
+  s.charAt(i);
+}
+```
+
+下面的示例与上面那个示例等价，但只创建了一个对象，它的执行结果更好：
+
+```
+var s = new String('0123456789');
+for (var i = 0; i < s.length; i++) {
+  s.charAt(i);
+}
+```
+
+## 使用累加形式连接字符串
+
+字符串连接可以非常消耗性能。使用 + 运算符不会直接把结果赋值给变量，它会在内存中创建一个新的字符串用于保存结果，这个新的字符串可以赋值给变量。下面的代码展示了一个常见的字符串连接：
+
+```
+a += 'x' + 'y';
+```
+
+这段代码首先会在内存中创建一个临时的字符串保存连接的结果 xy，然后将它连接到 a 的当前值，再将最终的连接结果赋值给 a。下面的代码使用了两条命令，但因为它每次都是直接赋值，所以不会使用临时字符串。当今许多浏览器中运行这段代码速度会快 20%，而且只需要更少的内存，因为它不需要暂存连接结果的临时字符串：
+
+```
+a += 'x';
+a += 'y';
+```
+
+→ [高效的 JavaScript](//www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html)
+
 ## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)
@@ -601,3 +654,5 @@ if (window.location != window.parent.location) window.parent.location = window.l
 [JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)
 [盘点JavaScript里好用的原生API ꒰･◡･๑꒱](//segmentfault.com/a/1190000002753931)
 [关于原生js的一些研究](//segmentfault.com/a/1190000002911253)
+[高效的 JavaScript](//www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html)
+
