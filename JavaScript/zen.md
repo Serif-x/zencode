@@ -254,6 +254,14 @@ myArray[0] = 0; // 允许了!
 
 > 如果属性是 JavaScript 中的保留字，一般用 html 前缀，比如 for 属性，使用 htmlFor 来访问。class 则不同，使用 className 来访问
 
+## 扩展原生属性
+
+> 需要考虑到为旧浏览器实现向后兼容
+
+```
+String.prototype.repeatify = String.prototype.repeatify || function(times) {/* code here */};
+```
+
 ## \[参考\]
 
 - [MDN](//developer.mozilla.org/zh-CN/docs/Web/JavaScript)
