@@ -42,6 +42,13 @@ console.log(myObj);
 
 > 所有的 JavaScript 对象继承于至少一个对象。被继承的对象被称作原型，并且继承的属性可能通过构造函数的 prototype 对象找到。
 
+## 函数
+
+> 函数的 length 是函数对象的一个属性值，指该函数有多少个必须要传入的参数，那些已定义了默认值的参数不算在内；
+比如function（xx = 0）的length是0。与之对比的是，arguments.length 是函数被调用时实际传参的个数。
+
+[Function.length](//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/length)
+
 ## 原型链继承
 
 要提防原型链过长带来的性能问题，并知道如何通过缩短原型链来提高性能。
