@@ -647,6 +647,29 @@ a += 'y';
 
 → [高效的 JavaScript](//www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html)
 
+## 复杂运算缓存
+
+```
+function memoizeFunction(func) {
+	var cache = {};
+	return function() {
+		var key = arguments[0];
+		if (cache[key]) {
+			return cache[key];
+		} else {
+			var val = func.apply(this, arguments);
+			cache[key] = val;
+			return val;
+		}
+	};
+}
+var fibonacci = memoizeFunction(function(n) {
+	return (n === 0 || n === 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+});
+console.log(fibonacci(100)); // 输出354224848179262000000
+console.log(fibonacci(100)); // 输出354224848179262000000
+```
+
 ## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)
