@@ -670,6 +670,28 @@ console.log(fibonacci(100)); // 输出354224848179262000000
 console.log(fibonacci(100)); // 输出354224848179262000000
 ```
 
+## 金钱千分位格式化
+
+```
+var money = '123456789';
+var format = money.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+console.log(format); // 123,456,789
+```
+
+也可用Number.toLocaleString实现，不过要考虑兼容性， [参考](//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
+
+```
+var money = 1234567.899;
+var format = money.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+console.log(format); // 1,234,567.90
+```
+
+## 数组去重
+
+```
+[...new Set([1, "1", 2, 1, 1, 3])]
+```
+
 ## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)
@@ -677,5 +699,6 @@ console.log(fibonacci(100)); // 输出354224848179262000000
 [JavaScript 秘密花园](//bonsaiden.github.io/JavaScript-Garden/zh)
 [盘点JavaScript里好用的原生API ꒰･◡･๑꒱](//segmentfault.com/a/1190000002753931)
 [关于原生js的一些研究](//segmentfault.com/a/1190000002911253)
-[高效的 JavaScript](//www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html)
+[高效的JavaScript](//www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html)
+[JavaScript编程黑科技](//github.com/jawil/blog/issues/24)
 
