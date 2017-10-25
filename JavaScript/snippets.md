@@ -692,6 +692,17 @@ console.log(format); // 1,234,567.90
 [...new Set([1, "1", 2, 1, 1, 3])]
 ```
 
+## 函数强制参数
+
+```
+mandatory = () => {
+	throw new Error('Missing parameter!');
+};
+foo = (bar = mandatory()) => {
+	return bar;
+};
+```
+
 ## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)
