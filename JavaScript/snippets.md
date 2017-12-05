@@ -703,6 +703,14 @@ foo = (bar = mandatory()) => {
 };
 ```
 
+## 判断是否为对象
+
+```
+function isObject(value) {
+  return Object(value) === value;
+}
+```
+
 ## \[参考\]
 
 [45 useful javascript tips tricks and best practices](http://modernweb.com/2013/12/23/45-useful-javascript-tips-tricks-and-best-practices/)
