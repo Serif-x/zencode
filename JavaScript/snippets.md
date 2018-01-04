@@ -246,6 +246,12 @@ myArray.length = 4; // myArray will be equal to [12 , 222 , 1000 , 124].
 //The array length is not a read only property.
 ```
 
+## 创建指定长度数组（不使用 `new` 操作符）
+
+```
+Array.apply(null, { length: 20 });
+```
+
 ## 去除字符串前后空白
 
 ```
