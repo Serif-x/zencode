@@ -273,6 +273,16 @@ myArray[0] = 0; // 允许了!
 String.prototype.repeatify = String.prototype.repeatify || function(times) {/* code here */};
 ```
 
+## 逗号（,）操作符
+
+> The comma operator evaluates each of its operands (from left to right) and returns the value of the last operand.
+
+逗号操作符会从左到右计算它的操作数，返回最后一个操作数的值
+
+```
+(1, 2, 3, 4) // => 4
+```
+
 ## \[参考\]
 
 - [MDN](//developer.mozilla.org/zh-CN/docs/Web/JavaScript)
