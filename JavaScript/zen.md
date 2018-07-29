@@ -283,6 +283,14 @@ String.prototype.repeatify = String.prototype.repeatify || function(times) {/* c
 (1, 2, 3, 4) // => 4
 ```
 
+## 运算符优先级：typeof
+
+```
+var str = 'why I am ' + typeof + ''
+// 等同于 'why I am ' + (typeof (+ ''))
+str // -> "why I am number"
+```
+
 ## \[参考\]
 
 - [MDN](//developer.mozilla.org/zh-CN/docs/Web/JavaScript)
@@ -290,3 +298,4 @@ String.prototype.repeatify = String.prototype.repeatify || function(times) {/* c
 - [Callback Hell](//callbackhell.com/)  
 - [JavaScript 与函数式编程](//www.zcfy.cc/article/javascript-and-functional-programming-1013.html)  
 - [每个JavaScript开发者都该懂的Unicode](//www.zcfy.cc/article/1303)
+- [JavaScript问题集锦](//github.com/creeperyang/blog/issues/2)
